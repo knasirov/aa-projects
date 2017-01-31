@@ -61,6 +61,17 @@ def iterative_fib(n)
   fibs_to_n
 end
 
+def subsets(array)
+  return [[]] if array.empty?
+  result = []
+  small_subset = subsets(array[1..-1])
+  small_subset.each do |subset|
+    result << [array.first] + subset
+  end
+
+  result.concat(small_subset)
+end
+
 def permutations(arr)
   return [arr] if arr.length <= 1
   perms = []
