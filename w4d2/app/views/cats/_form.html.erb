@@ -1,0 +1,76 @@
+<% if action == :edit %>
+  <% action_url = cat_url(cat) %>
+<% else %>
+  <% action_url = cats_url %>
+<% end %>
+
+
+<table>
+
+  <tr bgcolor= "#aec6cf">
+    <th colspan="2"><%= header %></th>
+  </tr>
+
+<form action="<%=action_url%>" method="post">
+
+  <% if action == :edit%>
+    <input type="hidden" name="_method" value="PATCH">
+  <% end %>
+
+  <tr>
+    <td> <label for="name">Name</label> </td>
+    <td> <input type="text" name="cat[name]" id="name" value="<%= cat.name %>"></td>
+  </tr>
+
+  <tr>
+    <td style="vertical-align:top"><label for="cat_sex">Sex</label></td>
+
+    <td>
+      <input type="radio" name="cat[sex]" id="cat_sex_female" value="F" <%= cat.sex == "F" ? "checked" : ""%> >
+      <label for="cat_sex_female">Female</label>
+
+        <br>
+
+      <input type="radio" name="cat[sex]" id="cat_sex_male" value="M" <%= cat.sex == "M" ? "checked" : ""%> >
+      <label for="cat_sex_male">Male</label>
+
+        <br>
+
+      <input type="radio" name="cat[sex]" id="cat_sex_other" value="X" <%= cat.sex == "X" ? "checked" : ""%> >
+      <label for="cat_sex_other">Other</label>
+    </td>
+  </tr>
+
+  <tr>
+
+
+    <td><label for="birth_date">Birthday</label></td>
+    <td><input type="date" name="cat[birth_date]" id="birth_date" value="<%= cat.birth_date %>"></td>
+
+  </tr>
+
+  <tr>
+    <td><label for="color">Color</label></td>
+    <td><select name="cat[color]" id="color">
+      <option disabled <%= cat.color ? "" : "selected" %>>-- Please Select --</option>
+      <option value="brown" <%= cat.color == "brown" ? "selected" : ""%> >Brown</option>
+      <option value="black" <%= cat.color == "black" ? "selected" : ""%> >Black</option>
+      <option value="white" <%= cat.color == "white" ? "selected" : ""%> >White</option>
+      <option value="ginger" <%= cat.color == "ginger" ? "selected" : ""%> >Ginger</option>
+      <option value="hairless" <%= cat.color == "hairless" ? "selected" : ""%> >Hairless</option>
+    </select></td>
+  </tr>
+
+
+  <tr>
+    <td style="vertical-align:top"><label for="description">Description</label></td>
+    <td><textarea name="cat[description]" id="description"><%= cat.description %></textarea></td>
+  </tr>
+
+  <tr>
+    <td colspan="2" align="center"><input type="submit" value= <%= header %>></td>
+  </tr>
+
+
+</form>
+</table>

@@ -1,0 +1,12 @@
+<h1>All the requests!</h1>
+
+<ul>
+  <% @cat_cuddle_requests.each do |request| %>
+    <li><h3> Requested cat: <%= Cat.find(request.cat_id).name %> </h3></li>
+    <ul>
+      <li> Start date: <%= request.start_date %></li>
+      <li> End date: <%= request.end_date %></li>
+      <li> Status: <%= request.status %></li>
+    </ul>
+  <% end %>
+</ul>

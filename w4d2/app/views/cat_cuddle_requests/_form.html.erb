@@ -1,0 +1,46 @@
+<% if action == :edit %>
+  <% action_url = cat_cuddle_request_url(cat_cuddle_request) %>
+<% else %>
+  <% action_url = cat_cuddle_requests_url %>
+<% end %>
+
+
+<table>
+
+  <tr bgcolor= "#aec6cf">
+    <th colspan="2"><%= header %></th>
+  </tr>
+
+<form action="<%=action_url%>" method="post">
+
+  <% if action == :edit%>
+    <input type="hidden" name="_method" value="PATCH">
+  <% end %>
+
+  <tr>
+    <td><label for="cat_id">Cat</label></td>
+    <td><select name="cat_cuddle_request[cat_id]" id="cat_id">
+      <option disabled <%= cat_cuddle_request.cat_id ? "" : "selected" %>>-- Please Select --</option>
+      <% Cat.all.each do |cat| %>
+        <option value="<%=cat.id%>"><%= cat.name %></option>
+      <% end %>
+    </select></td>
+  </tr>
+
+  <tr>
+    <td><label for="start_date">Start date</label></td>
+    <td><input type="date" name="cat_cuddle_request[start_date]" id="start_date" value="<%= cat_cuddle_request.start_date %>"></td>
+  </tr>
+
+  <tr>
+    <td><label for="end_date">End date</label></td>
+    <td><input type="date" name="cat_cuddle_request[end_date]" id="end_date" value="<%= cat_cuddle_request.end_date %>"></td>
+  </tr>
+
+  <tr>
+    <td colspan="2" align="center"><input type="submit" value= <%= header %>></td>
+  </tr>
+
+
+</form>
+</table>
