@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NinetyNineCatsDay1</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <% if current_user %>
+  <h1>
+    <%= current_user.username %>
+    <!-- <%= link_to "Sign out", controller: "sessions" , action: "destroy", id: @user %> -->
+    <form action="/session" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Log out!">
+    </form>
+
+  <% else %>
+    <%= link_to "Sign up", new_user_url %>
+    <%= link_to "Sign in", new_session_url %>
+  <% end %>
+  </h1>
+
+  <%= render "shared/errors" %>
+
+<%= yield %>
+
+</body>
+</html>
