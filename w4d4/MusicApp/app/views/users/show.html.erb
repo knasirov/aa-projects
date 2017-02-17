@@ -1,0 +1,9 @@
+<h1>Hello, <%= @user.email %>!</h1>
+
+<form action=" <%= session_url %>" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+  <%= auth_token %>
+
+  <input type="submit" value="Log out!">
+
+</form>
