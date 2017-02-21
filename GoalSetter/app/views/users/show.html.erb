@@ -1,0 +1,38 @@
+<h1>Goaling App</h1>
+
+<h3><%= @user.username %>'s Profile</h3>
+
+<% if @user.comments %>
+  <% @user.comments.each do |comment| %>
+    <%= comment.body %>
+  <% end %>
+<% end %>
+
+<form action="<%= comments_url %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label for="Comment">New Comment</label>
+  <textarea name="comment[body]" id="Comment"></textarea>
+  <input type="submit" name="" value="Save Comment">
+</form>
+
+<h3><%= @user.username %>'s Goals</h3>
+
+<% if @user.id == current_user.id %>
+  <%= link_to "add goal", new_goal_url %>
+<% end %>
+
+<ul>
+  <%@user.goals.each do |goal| %>
+  <li>
+    <%=link_to goal.title, goal_url(goal) %>
+    <br>
+    <%= goal.private ? "private" : "public" %>
+    <br>
+    <%= goal.completed ? "Complete" : "Ongoing" %>
+
+  </li>
+  <%end %>
+</ul>
+
+<%=link_to "All Users", users_url %>
