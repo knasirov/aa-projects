@@ -1,0 +1,10 @@
+<form action="<%= goals_url %>" method="post">
+
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <input type="text" name="goal[title]">
+  <input type="text" name="goal[description]">
+  <input type="text" name="" value="">
+  <input type="checkboxes" name="goal[private]">
+  
+</form>

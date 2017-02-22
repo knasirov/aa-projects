@@ -1,0 +1,9 @@
+<h1>Posts for <%= Sub.find(params[:sub_id]).title %></h1>
+
+<h3> <%= link_to "Make a new post!", new_post_url %></h3>
+
+<ul>
+  <% @posts.each do |post| %>
+    <li> <%= link_to post.title, post_url(post) %> </li>
+  <% end %>
+</ul>
