@@ -1,0 +1,25 @@
+.sections-nav ul {
+	display: flex;
+	justify-content: center;
+	padding: 10px;
+	border-bottom: solid 1px $light-gray;
+}
+
+.sections-nav li {
+	font-family: $sans-serif;
+	font-size: 15px;
+	margin: 0 5px;
+}
+
+.sections-nav button {
+	text-transform: none;
+	background: none;
+	padding: 0px;
+	color: #000;
+	font-weight: normal;
+	border: none;
+}
+
+.sections-nav button:hover {
+	background-color: $lightest-gray;
+}
