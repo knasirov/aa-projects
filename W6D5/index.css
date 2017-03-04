@@ -1,0 +1,34 @@
+body, ul, h1, div, article {
+  border: 0px;
+  margin: 0px;
+  padding: 0px;
+  font-family: inherit;
+}
+
+.tabHeader {
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.tabWidget {
+  border: 1px solid black;
+  border-radius: 5px;
+  width: 300px;
+}
+
+.titles {
+  display: flex;
+  justify-content: space-around;
+}
+
+.content {
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: green;
+  color: white;
+}
+
+.tabHeader:hover {
+  background-color: gray;
+}
