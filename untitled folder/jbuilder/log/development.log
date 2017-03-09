@@ -1,0 +1,360 @@
+  [1m[36mSQL (52.9ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (7.8ms)[0m  CREATE TABLE "gifts" ("id" serial primary key, "title" character varying, "description" character varying, "guest_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (4.5ms)[0m  [1mCREATE TABLE "guests" ("id" serial primary key, "name" character varying, "age" integer, "favorite_color" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (3.0ms)[0m  CREATE TABLE "invitations" ("id" serial primary key, "guest_id" integer, "party_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (5.1ms)[0m  [1mCREATE TABLE "parties" ("id" serial primary key, "name" character varying, "location" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (3.0ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (1.6ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.5ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (0.6ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151208013549')[0m
+  [1m[35m (0.6ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151208013309')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151208013350')[0m
+  [1m[35m (0.5ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151208013427')
+  [1m[36mSQL (0.4ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (7.8ms)[0m  CREATE TABLE "gifts" ("id" serial primary key, "title" character varying, "description" character varying, "guest_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (5.2ms)[0m  [1mCREATE TABLE "guests" ("id" serial primary key, "name" character varying, "age" integer, "favorite_color" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (4.8ms)[0m  CREATE TABLE "invitations" ("id" serial primary key, "guest_id" integer, "party_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (7.5ms)[0m  [1mCREATE TABLE "parties" ("id" serial primary key, "name" character varying, "location" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (3.9ms)[0m  CREATE TABLE "schema_migrations" ("version" character varying NOT NULL) 
+  [1m[36m (2.1ms)[0m  [1mCREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")[0m
+  [1m[35m (0.8ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36m (1.0ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151208013549')[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151208013309')
+  [1m[36m (0.8ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20151208013350')[0m
+  [1m[35m (0.8ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20151208013427')
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "guests" ("name", "age", "favorite_color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "John Smith"], ["age", 45], ["favorite_color", "Blue"], ["created_at", "2017-03-08 18:03:52.561516"], ["updated_at", "2017-03-08 18:03:52.561516"]]
+  [1m[35m (0.7ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "guests" ("name", "age", "favorite_color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["name", "Jane Doe"], ["age", 47], ["favorite_color", "Green"], ["created_at", "2017-03-08 18:03:52.582097"], ["updated_at", "2017-03-08 18:03:52.582097"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "guests" ("name", "age", "favorite_color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Josh Brown"], ["age", 22], ["favorite_color", "Brown"], ["created_at", "2017-03-08 18:03:52.584700"], ["updated_at", "2017-03-08 18:03:52.584700"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "guests" ("name", "age", "favorite_color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["name", "Helen White"], ["age", 25], ["favorite_color", "White"], ["created_at", "2017-03-08 18:03:52.587241"], ["updated_at", "2017-03-08 18:03:52.587241"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "guests" ("name", "age", "favorite_color", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Job Bluth"], ["age", 41], ["favorite_color", "Red"], ["created_at", "2017-03-08 18:03:52.589478"], ["updated_at", "2017-03-08 18:03:52.589478"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mGuest Load (0.5ms)[0m  SELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "gifts" ("title", "description", "guest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "A Bottle of Wine"], ["description", "This one is not so great."], ["guest_id", 1], ["created_at", "2017-03-08 18:03:52.635122"], ["updated_at", "2017-03-08 18:03:52.635122"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mGuest Load (0.3ms)[0m  SELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "gifts" ("title", "description", "guest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Another Bottle of Wine"], ["description", "This one is not so bad."], ["guest_id", 1], ["created_at", "2017-03-08 18:03:52.639351"], ["updated_at", "2017-03-08 18:03:52.639351"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mGuest Load (0.3ms)[0m  SELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "gifts" ("title", "description", "guest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "The Hunger Games"], ["description", "A bit dark for a gift, but it's good."], ["guest_id", 2], ["created_at", "2017-03-08 18:03:52.642656"], ["updated_at", "2017-03-08 18:03:52.642656"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mGuest Load (0.3ms)[0m  SELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "gifts" ("title", "description", "guest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Baseball Glove"], ["description", "Feel like a kid again!"], ["guest_id", 3], ["created_at", "2017-03-08 18:03:52.645857"], ["updated_at", "2017-03-08 18:03:52.645857"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mGuest Load (0.3ms)[0m  SELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "gifts" ("title", "description", "guest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Basketball Tickets"], ["description", "The team's going 82-0 this year."], ["guest_id", 3], ["created_at", "2017-03-08 18:03:52.649201"], ["updated_at", "2017-03-08 18:03:52.649201"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mGuest Load (0.3ms)[0m  SELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "gifts" ("title", "description", "guest_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Hawaiian Getaway"], ["description", "Helen has the best gifts."], ["guest_id", 4], ["created_at", "2017-03-08 18:03:52.652256"], ["updated_at", "2017-03-08 18:03:52.652256"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "parties" ("name", "location", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["name", "Secret Santa Extravaganza"], ["location", "Portland"], ["created_at", "2017-03-08 18:03:52.662354"], ["updated_at", "2017-03-08 18:03:52.662354"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "parties" ("name", "location", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Charles' Christmas Party"], ["location", "San Francisco"], ["created_at", "2017-03-08 18:03:52.666256"], ["updated_at", "2017-03-08 18:03:52.666256"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mParty Load (0.3ms)[0m  SELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mGuest Load (0.2ms)[0m  [1mSELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "invitations" ("guest_id", "party_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["guest_id", 1], ["party_id", 1], ["created_at", "2017-03-08 18:03:52.681295"], ["updated_at", "2017-03-08 18:03:52.681295"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mParty Load (0.3ms)[0m  [1mSELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mGuest Load (0.2ms)[0m  SELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "invitations" ("guest_id", "party_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["guest_id", 2], ["party_id", 1], ["created_at", "2017-03-08 18:03:52.685560"], ["updated_at", "2017-03-08 18:03:52.685560"]]
+  [1m[35m (0.9ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mParty Load (0.3ms)[0m  SELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mGuest Load (0.2ms)[0m  [1mSELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "invitations" ("guest_id", "party_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["guest_id", 3], ["party_id", 1], ["created_at", "2017-03-08 18:03:52.689950"], ["updated_at", "2017-03-08 18:03:52.689950"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mParty Load (0.3ms)[0m  [1mSELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mGuest Load (0.2ms)[0m  SELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT 1  [["id", 4]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "invitations" ("guest_id", "party_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["guest_id", 4], ["party_id", 1], ["created_at", "2017-03-08 18:03:52.693660"], ["updated_at", "2017-03-08 18:03:52.693660"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mParty Load (0.3ms)[0m  SELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mGuest Load (0.2ms)[0m  [1mSELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "invitations" ("guest_id", "party_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["guest_id", 5], ["party_id", 1], ["created_at", "2017-03-08 18:03:52.697320"], ["updated_at", "2017-03-08 18:03:52.697320"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mParty Load (0.3ms)[0m  [1mSELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mGuest Load (0.2ms)[0m  SELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "invitations" ("guest_id", "party_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["guest_id", 3], ["party_id", 2], ["created_at", "2017-03-08 18:03:52.700916"], ["updated_at", "2017-03-08 18:03:52.700916"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mParty Load (0.2ms)[0m  SELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mGuest Load (0.2ms)[0m  [1mSELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "invitations" ("guest_id", "party_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["guest_id", 4], ["party_id", 2], ["created_at", "2017-03-08 18:03:52.704419"], ["updated_at", "2017-03-08 18:03:52.704419"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/" for ::1 at 2017-03-08 10:10:14 -0800
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/railties-4.2.3/lib/rails/templates/rails/welcome/index.html.erb (13.1ms)
+Completed 200 OK in 21ms (Views: 20.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/guests/1" for ::1 at 2017-03-08 10:10:21 -0800
+Processing by Api::GuestsController#show as JSON
+  Parameters: {"id"=>"1"}
+  [1m[35mGuest Load (1.0ms)[0m  SELECT  "guests".* FROM "guests" WHERE "guests"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered api/guests/show.json.jbuilder (2.5ms)
+Completed 200 OK in 43ms (Views: 10.8ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/api/parties/2" for ::1 at 2017-03-08 10:24:56 -0800
+Processing by Api::PartiesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mParty Load (0.5ms)[0m  [1mSELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered api/parties/_party.json.jbuilder (26.7ms)
+  [1m[35mGuest Load (0.8ms)[0m  SELECT "guests".* FROM "guests" INNER JOIN "invitations" ON "guests"."id" = "invitations"."guest_id" WHERE "invitations"."party_id" = $1  [["party_id", 2]]
+  Rendered api/parties/show.json.jbuilder (42.7ms)
+Completed 200 OK in 58ms (Views: 43.4ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/api/parties/2" for ::1 at 2017-03-08 10:26:15 -0800
+Processing by Api::PartiesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mParty Load (0.7ms)[0m  [1mSELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered api/parties/_party.json.jbuilder (0.7ms)
+  [1m[35mGuest Load (0.7ms)[0m  SELECT "guests".* FROM "guests" INNER JOIN "invitations" ON "guests"."id" = "invitations"."guest_id" WHERE "invitations"."party_id" = $1  [["party_id", 2]]
+  Rendered api/parties/show.json.jbuilder (4.6ms)
+Completed 200 OK in 12ms (Views: 8.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/parties/2" for ::1 at 2017-03-08 10:27:25 -0800
+Processing by Api::PartiesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mParty Load (0.5ms)[0m  [1mSELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered api/parties/_party.json.jbuilder (0.4ms)
+  Rendered api/parties/show.json.jbuilder (1.3ms)
+Completed 200 OK in 7ms (Views: 5.9ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/parties/2" for ::1 at 2017-03-08 10:27:48 -0800
+Processing by Api::PartiesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[35mParty Load (0.4ms)[0m  SELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered api/parties/_party.json.jbuilder (0.1ms)
+  Rendered api/parties/show.json.jbuilder (36.3ms)
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 0.4ms)
+
+ActionView::Template::Error (undefined local variable or method `party' for #<#<Class:0x007fe735853058>:0x007fe731ca2338>
+Did you mean?  @party):
+    1: json.partial! 'party', party: @party
+    2: json.guests party.guests
+    3: 
+    4: json.gifts @party.guests :gifts
+  app/views/api/parties/show.json.jbuilder:2:in `_app_views_api_parties_show_json_jbuilder__1638316938159357865_70315474702920'
+  app/controllers/api/parties_controller.rb:9:in `show'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.5ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.8ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (27.5ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (128.2ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (138.7ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (250.1ms)
+
+
+Started GET "/api/parties/2" for ::1 at 2017-03-08 10:27:57 -0800
+Processing by Api::PartiesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mParty Load (0.4ms)[0m  [1mSELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered api/parties/_party.json.jbuilder (0.2ms)
+  [1m[35mGuest Load (1.3ms)[0m  SELECT "guests".* FROM "guests" INNER JOIN "invitations" ON "guests"."id" = "invitations"."guest_id" WHERE "invitations"."party_id" = $1  [["party_id", 2]]
+  Rendered api/parties/show.json.jbuilder (5.9ms)
+Completed 200 OK in 13ms (Views: 9.9ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/parties/2" for ::1 at 2017-03-08 10:28:35 -0800
+Processing by Api::PartiesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mParty Load (0.5ms)[0m  [1mSELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered api/parties/_party.json.jbuilder (0.1ms)
+  [1m[35mGuest Load (0.5ms)[0m  SELECT "guests".* FROM "guests" INNER JOIN "invitations" ON "guests"."id" = "invitations"."guest_id" WHERE "invitations"."party_id" = $1  [["party_id", 2]]
+  [1m[36mGift Load (0.4ms)[0m  [1mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 3]]
+  [1m[35mGift Load (0.6ms)[0m  SELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1  [["guest_id", 4]]
+  Rendered api/parties/show.json.jbuilder (22.9ms)
+Completed 200 OK in 29ms (Views: 24.2ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/api/parties/2" for ::1 at 2017-03-08 10:30:14 -0800
+Processing by Api::PartiesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mParty Load (0.4ms)[0m  [1mSELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered api/parties/_party.json.jbuilder (0.1ms)
+  [1m[35mGuest Load (0.5ms)[0m  SELECT "guests".* FROM "guests" INNER JOIN "invitations" ON "guests"."id" = "invitations"."guest_id" WHERE "invitations"."party_id" = $1  [["party_id", 2]]
+  [1m[36mGift Load (0.4ms)[0m  [1mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 3]]
+  [1m[35mGift Load (0.4ms)[0m  SELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1  [["guest_id", 4]]
+  Rendered api/parties/show.json.jbuilder (7.4ms)
+Completed 200 OK in 16ms (Views: 13.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/parties/2" for ::1 at 2017-03-08 10:31:14 -0800
+Processing by Api::PartiesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mParty Load (0.3ms)[0m  [1mSELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered api/parties/_party.json.jbuilder (0.1ms)
+  [1m[35mGuest Load (0.6ms)[0m  SELECT "guests".* FROM "guests" INNER JOIN "invitations" ON "guests"."id" = "invitations"."guest_id" WHERE "invitations"."party_id" = $1  [["party_id", 2]]
+  Rendered api/parties/show.json.jbuilder (8.3ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.9ms)
+
+ActionView::Template::Error (Missing partial ../guests/_guest with {:locale=>[:en], :formats=>[:json], :variants=>[], :handlers=>[:jbuilder]}. Searched in:
+  * "/Users/appacademy/Desktop/w7d3/jbuilder/app/views"
+):
+    3:   # json.name guest.name
+    4:   # json.age guest.age
+    5:   # json.favorite_color guest.favorite_color
+    6:   json.partial! '../guests/guest', guest: guest
+    7:   json.gifts guest.gifts
+    8: 
+    9: end
+  app/views/api/parties/show.json.jbuilder:6:in `block in _app_views_api_parties_show_json_jbuilder__1638316938159357865_70315506654000'
+  app/views/api/parties/show.json.jbuilder:2:in `_app_views_api_parties_show_json_jbuilder__1638316938159357865_70315506654000'
+  app/controllers/api/parties_controller.rb:9:in `show'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.0ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (87.5ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (76.1ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (171.4ms)
+
+
+Started GET "/api/parties/2" for ::1 at 2017-03-08 10:31:32 -0800
+Processing by Api::PartiesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mParty Load (0.3ms)[0m  [1mSELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered api/parties/_party.json.jbuilder (0.1ms)
+  [1m[35mGuest Load (0.4ms)[0m  SELECT "guests".* FROM "guests" INNER JOIN "invitations" ON "guests"."id" = "invitations"."guest_id" WHERE "invitations"."party_id" = $1  [["party_id", 2]]
+  Rendered api/guests/_guest.json.jbuilder (0.4ms)
+  Rendered api/guests/_guest.json.jbuilder (0.1ms)
+  [1m[36mGift Load (0.4ms)[0m  [1mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 3]]
+  [1m[35mGift Load (0.5ms)[0m  SELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1  [["guest_id", 4]]
+  Rendered api/parties/show.json.jbuilder (10.7ms)
+Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/parties/2" for ::1 at 2017-03-08 10:33:13 -0800
+Processing by Api::PartiesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mParty Load (0.3ms)[0m  [1mSELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered api/parties/_party.json.jbuilder (0.1ms)
+  [1m[35mGuest Load (0.4ms)[0m  SELECT "guests".* FROM "guests" INNER JOIN "invitations" ON "guests"."id" = "invitations"."guest_id" WHERE "invitations"."party_id" = $1  [["party_id", 2]]
+  Rendered api/guests/_guest.json.jbuilder (0.1ms)
+  Rendered api/parties/show.json.jbuilder (37.4ms)
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 0.7ms)
+
+ActionView::Template::Error (undefined local variable or method `gift' for #<#<Class:0x007fe735853058>:0x007fe7319e3de0>):
+    1: json.partial! 'party', party: @party
+    2: json.guests @party.guests do |guest|
+    3:   json.partial! 'api/guests/guest', guest: guest
+    4:   json.partial! 'api/gifts/gift', gift: gift
+    5: end
+  app/views/api/parties/show.json.jbuilder:4:in `block in _app_views_api_parties_show_json_jbuilder__1638316938159357865_70315469743600'
+  app/views/api/parties/show.json.jbuilder:2:in `_app_views_api_parties_show_json_jbuilder__1638316938159357865_70315469743600'
+  app/controllers/api/parties_controller.rb:9:in `show'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.0ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (94.2ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (75.3ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (167.7ms)
+
+
+Started GET "/api/parties/2" for ::1 at 2017-03-08 10:34:33 -0800
+Processing by Api::PartiesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mParty Load (0.3ms)[0m  [1mSELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered api/parties/_party.json.jbuilder (0.2ms)
+  [1m[35mGuest Load (0.4ms)[0m  SELECT "guests".* FROM "guests" INNER JOIN "invitations" ON "guests"."id" = "invitations"."guest_id" WHERE "invitations"."party_id" = $1  [["party_id", 2]]
+  Rendered api/guests/_guest.json.jbuilder (0.3ms)
+  [1m[36mGift Load (0.3ms)[0m  [1mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1[0m  [["guest_id", 3]]
+  Rendered api/gifts/_gift.json.jbuilder (0.4ms)
+  Rendered api/gifts/_gift.json.jbuilder (0.1ms)
+  Rendered api/guests/_guest.json.jbuilder (0.1ms)
+  [1m[35mGift Load (0.3ms)[0m  SELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" = $1  [["guest_id", 4]]
+  Rendered api/gifts/_gift.json.jbuilder (0.1ms)
+  Rendered api/parties/show.json.jbuilder (11.6ms)
+Completed 200 OK in 19ms (Views: 16.5ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/parties/2" for ::1 at 2017-03-08 10:40:43 -0800
+Processing by Api::PartiesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[36mParty Load (0.2ms)[0m  [1mSELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT 1[0m  [["id", 2]]
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 2.8ms)
+
+NoMethodError (undefined method `includes' for #<Party:0x007fe731d9aab0>):
+  app/controllers/api/parties_controller.rb:8:in `show'
+
+
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.2ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (87.8ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (77.7ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/appacademy/.rbenv/versions/2.3.1/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (177.2ms)
+
+
+Started GET "/api/parties/2" for ::1 at 2017-03-08 10:41:06 -0800
+Processing by Api::PartiesController#show as JSON
+  Parameters: {"id"=>"2"}
+  [1m[35mParty Load (0.2ms)[0m  SELECT  "parties".* FROM "parties" WHERE "parties"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mInvitation Load (0.4ms)[0m  [1mSELECT "invitations".* FROM "invitations" WHERE "invitations"."party_id" IN (2)[0m
+  [1m[35mGuest Load (0.6ms)[0m  SELECT "guests".* FROM "guests" WHERE "guests"."id" IN (3, 4)
+  [1m[36mGift Load (0.4ms)[0m  [1mSELECT "gifts".* FROM "gifts" WHERE "gifts"."guest_id" IN (3, 4)[0m
+  Rendered api/parties/_party.json.jbuilder (0.1ms)
+  Rendered api/guests/_guest.json.jbuilder (0.1ms)
+  Rendered api/gifts/_gift.json.jbuilder (0.1ms)
+  Rendered api/gifts/_gift.json.jbuilder (0.1ms)
+  Rendered api/guests/_guest.json.jbuilder (0.1ms)
+  Rendered api/gifts/_gift.json.jbuilder (0.1ms)
+  Rendered api/parties/show.json.jbuilder (9.7ms)
+Completed 200 OK in 121ms (Views: 15.4ms | ActiveRecord: 10.0ms)
