@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Bench.create(description: "awesome", lat: 37.791035, lng: -122.427971)
+Bench.create(description: "great", lat: 37.790802, lng: -122.437777)
+Bench.create(description: "wonderful", lat: 37.775959, lng: -122.433855)
+Bench.create(description: "meh", lat: 37.769569, lng: -122.461020)
+Bench.create(description: "not bad", lat: 37.753387, lng: -122.446970)
