@@ -1,4 +1,5 @@
 import React from 'react';
+import merge from 'lodash/merge';
 import { uniqueId } from '../../util/utils';
 
 class SessionForm extends React.Component {
@@ -14,7 +15,7 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.processForm(this.state);
+    this.props.processForm(merge({}, this.state));
     this.state = {username: "", password: ""};
   }
 
@@ -37,38 +38,32 @@ class SessionForm extends React.Component {
   }
 
   render () {
-    console.log(this.props);
     const { username, password } = this.state;
 
-    if (this.props.loggedIn) {
-      window.location = '/';
-    } else {
-      return (
-        <div>
-          <h1>{this.formType()}</h1>
+    return (
+      <div>
+        <h1>{this.formType()}</h1>
 
-          <ul>{this.errors()}</ul>
+        <ul>{this.errors()}</ul>
 
-          <form onSubmit={this.handleSubmit}>
-            <input
-              placeholder="Username"
-              value={username}
-              onChange={this.update('username')}>
-            </input>
+        <form onSubmit={this.handleSubmit}>
+          <input
+            placeholder="Username"
+            value={username}
+            onChange={this.update('username')}>
+          </input>
 
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={this.update('password')}>
-            </input>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={this.update('password')}>
+          </input>
 
-            <input type="submit" value={this.formType()}></input>
-          </form>
-        </div>
-      )
-    }
-
+          <input type="submit" value={this.formType()}></input>
+        </form>
+      </div>
+    )
   }
 }
 
