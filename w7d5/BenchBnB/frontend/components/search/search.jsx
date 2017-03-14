@@ -4,10 +4,9 @@ import BenchIndex from '../bench_index';
 
 const Search = (props) => {
   const { benches, fetchBenches } = props;
-
   return (
     <div>
-      <BenchMap />
+      <BenchMap benches={benches}/>
       <BenchIndex benches={benches} fetchBenches={fetchBenches} />
     </div>
   )
