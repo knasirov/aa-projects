@@ -76,8 +76,8 @@ class Array
     self
   end
 
-  def my_join(str="")
-    string = "#{self.first}"
+  def my_join(str = "")
+    string = self.first.to_s
     self[1..-1].each { |el| string << "#{str}#{el}" }
 
     string
@@ -85,16 +85,16 @@ class Array
 
   def my_reverse
     reverse = []
-    (length-1).downto(0).each { |i| reverse << self[i] }
+    (length - 1).downto(0).each { |i| reverse << self[i] }
     reverse
   end
 
   def bubble_sort!(&prc)
     prc ||= Proc.new { |num1, num2| num1 <=> num2 }
     count.times do
-      (count-1).times do |i|
-        if prc.call(self[i], self[i+1]) == 1
-          self[i], self[i+1] = self[i+1], self[i]
+      (count - 1).times do |i|
+        if prc.call(self[i], self[i + 1]) == 1
+          self[i], self[i + 1] = self[i + 1], self[i]
         end
       end
     end
